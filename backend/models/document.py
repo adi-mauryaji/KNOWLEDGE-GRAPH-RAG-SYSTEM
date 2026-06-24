@@ -48,8 +48,3 @@ class RetievedChunk(BaseModel):
                 f"{self.text}"
         )
 
-
-
-
-
-

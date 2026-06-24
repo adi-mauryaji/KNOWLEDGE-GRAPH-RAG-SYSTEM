@@ -1,0 +1,27 @@
+# Environment variables 
+.env
+.env.*
+!.env.example
+
+# Python
+___pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.egg-info/
+
+# Uploaded files
+uploads/
+*.pdf
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
