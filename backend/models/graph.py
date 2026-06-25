@@ -52,7 +52,7 @@ class GraphNode(BaseModel):
     type: str
     doc_ids: list[str]=[]
 
-class GraphEdge(BaseModel)
+class GraphEdge(BaseModel):
     source: str
     target: str
     type: str
@@ -63,6 +63,6 @@ class GraphResponse(BaseModel):
     source: list[GraphEdge]
     total_nodes: int
     total_edges: int
-    
+
         
     

@@ -5,7 +5,7 @@ import uuid
 
 class DocumentMetadata(BaseModel):
     """YE STORE HOGA postgreSQL me YA KISI ME BHI JISME HUMEIN STORE KARNA HAI"""
-    doc_id: str = Field(default_factory=Lambda:str(uuid.uuid4()))
+    doc_id: str = Field(default_factory=lambda:str(uuid.uuid4()))
     filename: str
     file_hash: str                          #MD5 for duplicate detection-> mtlb yeh humein ye batayega ki file duplicate hai ya nahi
     file_size_bytes: int
@@ -20,7 +20,7 @@ class DocumentMetadata(BaseModel):
 
 class Chunk(BaseModel):
         """YE HOGA CHUNK KA MODEL JISME HUMEIN CHUNK KA DATA STORE KARNA HAI"""
-        chunk_id: str = Field(default_factory=Lambda:str(uuid.uuid4()))
+        chunk_id: str = Field(default_factory=lambda:str(uuid.uuid4()))
         doc_id: str
         chunk_index: int
         text: str
