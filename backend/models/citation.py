@@ -27,7 +27,7 @@ class CitationBundle(BaseModel):
     @classmethod
     def from_citations(cls,citations: list[Citation]) -> "CitationBundle":
         return cls(
-            citations=citations
+            citations=citations,
             total_sources=len(citations),
             unique_documents=list({c.filename for c in citations})
         )
