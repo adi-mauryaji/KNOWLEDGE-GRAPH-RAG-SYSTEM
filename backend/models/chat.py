@@ -32,7 +32,7 @@ class ChatRequest(BaseModel):
         description="Whether to use graph retrieval"
     )
 
-class ChatResponsse(BaseModel):
+class ChatResponse(BaseModel):
     answer: str
     Citation: list[Citation]
     query_id: str
