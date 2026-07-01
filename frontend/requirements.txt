@@ -1,0 +1,17 @@
+# Pura frontend framework python code se directly web UI banane ke liye
+streamlit==1.39.0
+
+# Backend fastAPI ke sath http calls krne ke liye - btaya to tha guchu guchu
+httpx==0.27.2
+
+# Interactive graph/network visualizations ke liye
+pyvis==0.3.2
+
+# Tabular form me data ko display krne ke liya
+pandas==2.2.3
+
+# Charts/Graphs ko dasbord me dikhane ke liye
+plotly==5.24.0
+
+
+python-dotenv==1.0.1
