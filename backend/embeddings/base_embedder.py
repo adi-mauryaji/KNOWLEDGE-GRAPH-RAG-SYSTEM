@@ -23,4 +23,4 @@ class BaseEmbedder(ABC):
         a = np.array(vec1)
         b = np.array(vec2)
         return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
-#for ssh testing
+
