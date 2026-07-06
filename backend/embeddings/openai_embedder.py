@@ -41,3 +41,4 @@ class OpenAIEmbedder(BaseEmbedder):
                 wait_time = 2 ** attempt 
                 logger.warning(f"Embeddding attempt {attempt+1} failed. Waiting {wait_time}s...")
                 time.sleep(wait_time)
+                
