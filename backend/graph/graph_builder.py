@@ -17,6 +17,7 @@ class GraphBuilder:
 
     def _create_entities(self, session, entities, doc_id, chunk_id):
         for entity in entities:
+
             # MERGE = create if not exists, update if exists
             session.run("""
                 MERGE (e:Entity {name: $name})
@@ -37,10 +38,12 @@ class GraphBuilder:
 
     def _create_relationships(self, session, relationships, doc_id, chunk_id):
         for rel in relationships:
+
             # Relationship type comes from a CLOSED, validated set
             # (models/graph.py's VALID_RELATIONSHIP_TYPES already enforced
             # this at the Pydantic layer before it ever reaches here) —
             # so f-string interpolation here is safe, not arbitrary user input.
+
             session.run(f"""
                 MATCH (a:Entity {{name: $source}})
                 MATCH (b:Entity {{name: $target}})
@@ -52,8 +55,10 @@ class GraphBuilder:
             doc_id=doc_id, chunk_id=chunk_id)
 
     def delete_document_graph(self, doc_id: str):
+
         """Remove this document's contribution; delete entities with no
         remaining document references."""
+
         with get_neo4j_session() as session:
             session.run("""
                 MATCH (e:Entity)
@@ -66,3 +71,4 @@ class GraphBuilder:
                 WHERE size(e.doc_ids) = 0
                 DETACH DELETE e
             """)
+            
