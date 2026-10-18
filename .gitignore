@@ -9,6 +9,7 @@ ___pycache__/
 *.pyo
 venv/
 .venv/
+.venv312/
 *.egg-info/
 
 # Uploaded files

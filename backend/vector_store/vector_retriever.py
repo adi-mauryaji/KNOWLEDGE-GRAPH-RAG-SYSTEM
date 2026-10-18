@@ -29,7 +29,7 @@ class VectorRetriever:
             query_filter = Filter(
                 should=[
                     FieldCondition(key="doc_id", match=MatchValue(value=d))
-                    for d in docs_ids
+                    for d in doc_ids
                 ]
             )
 
@@ -64,7 +64,7 @@ class VectorRetriever:
         points = self.client.retrieved(
             collection_name = self.collection,
             ids = chunk_ids,
-            with_payload - True
+            with_payload = True
         )
 
         return [
