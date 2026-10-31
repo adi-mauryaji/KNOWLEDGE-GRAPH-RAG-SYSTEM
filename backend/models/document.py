@@ -30,7 +30,7 @@ class Chunk(BaseModel):
         filename: str
         token_count: Optional[int] = None
 
-class RetievedChunk(BaseModel):
+class RetrievedChunk(BaseModel):
     """YE HOGA RETRIEVED CHUNK KA MODEL JISME HUMEIN RETRIEVED CHUNK KA DATA STORE KARNA HAI"""
     chunk_id: str
     doc_id: str
