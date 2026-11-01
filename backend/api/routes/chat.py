@@ -8,7 +8,7 @@ router = APIRouter()
 @router.post("/chat", response_model=ChatResponse)
 async def chat(
     request: ChatRequest,
-    sevice: ChatService = Depends(ChatService)
+    service: ChatService = Depends(ChatService)
 ):
     
     start_time = time.time()
