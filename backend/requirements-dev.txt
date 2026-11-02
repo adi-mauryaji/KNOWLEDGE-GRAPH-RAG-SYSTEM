@@ -1,0 +1,3 @@
+# For development and testing purposes only
+
+reportlab==4.2.2
