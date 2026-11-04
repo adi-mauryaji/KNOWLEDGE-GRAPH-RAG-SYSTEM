@@ -28,3 +28,7 @@ Thumbs.db
 *.log
 
 KG-RAG.md
+
+# Local tooling
+.claude/
+.kyros/
