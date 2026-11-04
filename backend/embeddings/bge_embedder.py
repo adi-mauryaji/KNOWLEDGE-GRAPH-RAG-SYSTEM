@@ -14,7 +14,7 @@ class BGEEmbedder(BaseEmbedder):
         return self._dimension
 
     def embed_text(self, text: str) -> list[float]:
-        return self.model.encode(text, normalise_embedding=True).tolist()
+        return self.model.encode(text, normalize_embeddings=True).tolist()
      
     def embed_batch(self, texts: list[str]) -> list[list[float]]:
         """ BGE works best with instructions prefix for retrieval"""
@@ -23,7 +23,7 @@ class BGEEmbedder(BaseEmbedder):
 
         embeddings  = self.model.encode(
             prefixed,
-            normalised_embeddings=True,
+            normalize_embeddings=True,
             batch_size=32,
             show_progress_bar=len(texts) > 100
         )

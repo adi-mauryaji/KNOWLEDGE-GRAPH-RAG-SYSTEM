@@ -22,7 +22,6 @@ class Chunk(BaseModel):
         """YE HOGA CHUNK KA MODEL JISME HUMEIN CHUNK KA DATA STORE KARNA HAI"""
         chunk_id: str = Field(default_factory=lambda:str(uuid.uuid4()))
         doc_id: str
-        chunk_index: int
         text: str
         page_number: int = 0
         chunk_index: int = 0

@@ -2,7 +2,7 @@ from pydantic import BaseModel,field_validator
 from typing import Optional
 
 VALID_ENTITY_TYPES=frozenset({"Person","Organization","Technology","Concept","Location","ResearchPaper"})
-VALID_RELATIONSHIP_TYPES=frozenset({"USES","CREATED_BY","DEPENDS_ON","RELATED_TO","PARTS_OF","AUTHORED_BY","AFFILIATED_BY","INTRODUCED","MENTIONS","BASED_ON"})
+VALID_RELATIONSHIP_TYPES=frozenset({"USES","CREATED_BY","DEPENDS_ON","RELATED_TO","PART_OF","AUTHORED_BY","AFFILIATED_WITH","INTRODUCED","MENTIONS","BASED_ON"})
 
 class Entity(BaseModel):
     name:str
@@ -53,14 +53,14 @@ class GraphNode(BaseModel):
     doc_ids: list[str]=[]
 
 class GraphEdge(BaseModel):
-    source: str
-    target: str
+    source: int
+    target: int
     type: str
     doc_id: Optional[str]=None
 
 class GraphResponse(BaseModel):
     nodes: list[GraphNode]
-    source: list[GraphEdge]
+    edges: list[GraphEdge]
     total_nodes: int
     total_edges: int
 

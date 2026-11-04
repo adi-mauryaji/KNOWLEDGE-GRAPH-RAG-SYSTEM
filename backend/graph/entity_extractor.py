@@ -59,8 +59,18 @@ VALID_REL_TYPES = {
 class EntityExtractor:
 
     def __init__(self):
-        self.client = OpenAI(api_key=settings.OPENAI_API_KEY)
-        self.model = settings.EXTRACTION_MODEL
+        if settings.LLM_PROVIDER == "gemini":
+            self.client = OpenAI(
+                api_key=settings.GEMINI_API_KEY,
+                base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+            )
+            self.model = settings.GEMINI_CHAT_MODEL
+        else:
+            self.client = OpenAI(api_key=settings.OPENAI_API_KEY)
+            self.model = settings.EXTRACTION_MODEL
+            
+        #self.client = OpenAI(api_key=settings.OPENAI_API_KEY)
+        #self.model = settings.EXTRACTION_MODEL
 
     def extract(self, text: str, chunk_id: str) -> ExtractionResult:
         text = text[:3000]   # Save tokens, focus extraction

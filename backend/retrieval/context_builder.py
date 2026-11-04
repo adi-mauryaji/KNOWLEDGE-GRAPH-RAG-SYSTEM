@@ -9,13 +9,13 @@ class ContextBuilder:
         context_parts = []
         current_tokens = 0
 
-        for i, chunk in enumerate(chunk, 1):
+        for i, chunk in enumerate(chunks, 1):
             chunk_tokens = len(chunk.text) // 4 # its a rough estimate we are assuming here 1 token = 4 characters
 
             if current_tokens + chunk_tokens > max_tokens:
                 break
 
-            chunk_header = f"[{1}] Source: {chunk.filename} | Page: {chunk.page_number}"
+            chunk_header = f"[{i}] Source: {chunk.filename} | Page: {chunk.page_number}"
             formatted = f"{chunk_header}\n{chunk.text}"
             context_parts.append(formatted)
             current_tokens += chunk_tokens

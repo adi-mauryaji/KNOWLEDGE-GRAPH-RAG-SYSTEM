@@ -7,7 +7,7 @@ class ChatRequest(BaseModel):
     query: str = Field(
         ...,
         min_length=1,
-        max_lenght=500,
+        max_length=500,
         description="User's question",
         examples=["What is the main contribution of the papers?"]
     )
@@ -34,13 +34,13 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     answer: str
-    Citation: list[Citation]
+    citations: list[Citation]
     query_id: str
     processing_time_ms: int
-    source_used: list[str]
+    sources_used: list[str]
     chunks_retrieved: int
     timestamp: datetime = Field(default_factory=datetime.now)
-    retrievel_breakdown: Optional[dict] = Field(
+    retrieval_breakdown: Optional[dict] = Field(
         default = None,
         description="How many chunks from vector vs graph"
     )
@@ -49,7 +49,7 @@ class DocumentUploadResponse(BaseModel):
     doc_id: str
     filename: str
     status: str
-    chunk_created: Optional[int] = None
+    chunks_created: Optional[int] = None
     entities_extracted: Optional[int] = None
-    message: str ="Document id being processed"
+    message: str ="Document is being processed"
 

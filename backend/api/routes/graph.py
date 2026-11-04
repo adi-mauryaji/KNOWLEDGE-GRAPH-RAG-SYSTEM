@@ -13,7 +13,7 @@ async def get_graph(
     with get_neo4j_session() as session:
         query = """
             MATCH (n:Entity)
-            WHERE ($doc_id IS NULL OR n.doc_id = $doc_id)
+            WHERE ($doc_id IS NULL OR $doc_id IN n.doc_ids)
             AND ($entity_type IS NULL OR n.type = $entity_type)
             WITH n LIMIT $limit
             OPTIONAL MATCH (n)-[r]->(m:Entity)
@@ -23,8 +23,8 @@ async def get_graph(
         """
         result = session.run(query, doc_id=doc_id,
                            entity_type=entity_type, limit=limit).single()
-
+        node_ids = {n["id"] for n in result["nodes"]}
         return {
             "nodes": result["nodes"],
-            "edges": [e for e in result["edges"] if e["target"] is not None]
+            "edges": [e for e in result["edges"] if e["target"] in node_ids]
         }

@@ -39,7 +39,7 @@ class TextCleaner:
     
     def _remove_artifacts(self, text: str) -> str:
         text = re.sub(r'Page\s+\d+\s+of\s+\d+', '', text, flags=re.IGNORECASE)
-        text = re.sub(r'^\s*[-–—]+\s*$', '', text, flags=re.MULTILINE)
+        text = re.sub(r'^\s*\d+\s*$', '', text, flags=re.MULTILINE)
         text = re.sub(r'[_\-=]{5,}', '', text)
         return text
     

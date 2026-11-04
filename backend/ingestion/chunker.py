@@ -2,9 +2,9 @@ from llama_index.core.node_parser import SentenceSplitter
 from llama_index.core.schema import Document, TextNode
 from enum import Enum
 
-class ChunkingStrategy(Enum):
+class ChunkingStrategy(str, Enum):
     RECURSIVE = "recursive"
-    SEMENTIC = "semantic"
+    SEMANTIC = "semantic"
     SENTENCE = "sentence"
 
 class Chunker:
@@ -35,6 +35,7 @@ class Chunker:
         )
 
         nodes = splitter.get_nodes_from_documents(documents)
+        nodes = [node for node in nodes if node.text.strip()]
 
         for i, node in enumerate(nodes):
             node.metadata["chunk_index"] = i

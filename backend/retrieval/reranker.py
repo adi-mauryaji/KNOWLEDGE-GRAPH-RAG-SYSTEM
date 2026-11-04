@@ -21,6 +21,6 @@ class SimpleReranker:
             overlap = len(query_words & chunk_words) / max(len(query_words), 1)
             final_score += overlap * 0.1
 
-            chunk.final_score = min(final_score, 0.1)
+            chunk.final_score = min(final_score, 1.0)
 
         return sorted(chunks, key=lambda x: x.final_score, reverse=True)

@@ -6,7 +6,7 @@ from utils.logger import get_logger
 logger = get_logger(__name__)
 
 class PDFLoader:
-    def __init__(self, file_path: str, doc_id: str ) -> list[Document]:
+    def load(self, file_path: str, doc_id: str ) -> list[Document]:
         path = Path(file_path)
         if not path.exists():
             raise FileNotFoundError(f"File not found: {file_path}")

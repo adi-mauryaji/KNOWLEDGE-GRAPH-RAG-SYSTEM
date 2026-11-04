@@ -20,7 +20,7 @@ class Citation(BaseModel):
         )
     
 class CitationBundle(BaseModel):
-    citation=list[Citation]
+    citations:list[Citation]
     total_sources: int
     unique_documents: list[str]
 

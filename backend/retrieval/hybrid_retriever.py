@@ -30,6 +30,7 @@ class HybridRetriever:
         graph_task = asyncio.to_thread(
             self.graph_retriever.search, query, top_k*2
         )
+        vector_results, graph_chunks_refs = await asyncio.gather(vector_task, graph_task)
 
         # Step 2 : we will fetch graph-refrenced chunks actual text from qdrant 
 

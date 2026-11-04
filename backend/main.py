@@ -25,9 +25,9 @@ app = FastAPI(
 )
 
 # CORS - frontend aur backend ki guchu guchu ke liye
-app.add.middleware(
+app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://localhost:8501"],
+    allow_origins=["http://localhost:8501"],
     allow_methods=["*"],
     allow_headers=["*"]
 )

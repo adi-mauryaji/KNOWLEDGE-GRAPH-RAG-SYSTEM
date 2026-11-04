@@ -12,7 +12,7 @@ class GeminiLLM:
         genai.configure(api_key = settings.GEMINI_API_KEY)
         self.model = genai.GenerativeModel(
             model_name = settings.GEMINI_CHAT_MODEL,
-            generation_config = genai.types.GenarationConfig(
+            generation_config = genai.types.GenerationConfig(
                 temperature = 0.1,
                 max_output_tokens = 1500,
             ),
@@ -23,7 +23,7 @@ class GeminiLLM:
         )
         logger.info(f"Bole to bidu Gemini LLM khidmat me hazir hai ! 🕵️‍♂️ :{settings.GEMINI_CHAT_MODEL} ")
 
-    async def copmplete(self, system: str, user: str, temperature: float = 0.1, max_tokens: int = 1000) -> str:
+    async def complete(self, system: str, user: str, temperature: float = 0.1, max_tokens: int = 1000) -> str:
         combined_propmt = f"{system}\n{user}"
 
         response = await asyncio.to_thread(self.model.generate_content, combined_propmt)

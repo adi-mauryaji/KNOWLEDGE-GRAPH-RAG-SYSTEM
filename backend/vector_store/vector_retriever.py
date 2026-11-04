@@ -36,7 +36,7 @@ class VectorRetriever:
         results: list[ScoredPoint] = self.client.search(
             collection_name = self.collection,
             query_vector = query_vector,
-            limited = top_k,
+            limit = top_k,
             query_filter = query_filter,
             score_threshold = min_score,
             with_payload = True
@@ -61,7 +61,7 @@ class VectorRetriever:
         if not chunk_ids:
             return[]
 
-        points = self.client.retrieved(
+        points = self.client.retrieve(
             collection_name = self.collection,
             ids = chunk_ids,
             with_payload = True
@@ -71,7 +71,7 @@ class VectorRetriever:
             RetrievedChunk(
                 chunk_id = str(point.id),
                 text = point.payload["text"],
-                doc_id = point.psyload["doc_id"],
+                doc_id = point.payload["doc_id"],
                 filename = point.payload["filename"],
                 page_number = point.payload.get("page_number", 0),
                 score = 1.0,
@@ -90,7 +90,7 @@ class VectorRetriever:
                 id = chunk["chunk_id"],
                 vector = emb,
                 payload = {
-                    "text": chunk["txt"],
+                    "text": chunk["text"],
                     "doc_id": chunk["doc_id"],
                     "filename": chunk["filename"],
                     "page_number": chunk.get("page_number", 0),

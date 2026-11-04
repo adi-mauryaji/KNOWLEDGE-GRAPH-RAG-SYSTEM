@@ -13,7 +13,7 @@ class TestChunker:
         )
 
     def test_basic_chunking(self):
-        doc = Document(text="A"*2000)
+        doc = Document(text="word"*2000)
         nodes = self.chunker.chunk([doc])
         assert len(nodes) > 1
         assert all(len(node.text) <= 512*5 for node in nodes) 

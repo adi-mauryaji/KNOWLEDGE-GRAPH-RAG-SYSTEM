@@ -31,10 +31,18 @@ async def upload_document(
         return result
     except Exception as e:
         raise HTTPException(status_code=500,detail=f"processing failed: {str(e)}")
-    
+
+@router.get("/documents")
+async def list_documents(
+    service: IngestionService = Depends(get_ingestion_service)
+):
+    """List all processed documents"""
+    return await service.list_documents()
+
+   
 @router.delete("/document/{doc_id}")
 async def delete_document(
-    doc_id = str,
+    doc_id : str,
     service: IngestionService = Depends(get_ingestion_service)
 ):
     

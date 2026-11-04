@@ -1,5 +1,5 @@
 from .base_embedder import BaseEmbedder
-from .openai_embedder import OPENAIEmbedder
+from .openai_embedder import OpenAIEmbedder
 from .bge_embedder import BGEEmbedder
 from .gemini_embedder import GeminiEmbedder
 from utils.config import get_settings, Settings
